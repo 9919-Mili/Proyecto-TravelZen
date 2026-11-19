@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-tqt0a!v(@3&di!k%k*61gmmd$d&1qq6e^l!kf5_6tb@2yla%&+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://proyecto-travelzen.onrender.com']
+ALLOWED_HOSTS = ['proyecto-travelzen.onrender.com', '127.0.0.1', 'localhost']
 
 CSRF_TRUSTED_ORIGINS = ['https://proyecto-travelzen.onrender.com']
 
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMirfddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
