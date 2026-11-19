@@ -28,7 +28,9 @@ SECRET_KEY = 'django-insecure-tqt0a!v(@3&di!k%k*61gmmd$d&1qq6e^l!kf5_6tb@2yla%&+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://proyecto-travelzen.onrender.com']
+
+CSRF_TRUSTED_ORIGINS = ['https://proyecto-travelzen.onrender.com']
 
 
 # Application definition
@@ -51,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.messages.middleware.MessageMirfddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
@@ -161,6 +163,7 @@ EMAIL_HOST = "c2280296.ferozo.com"
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
+EMAIL_TIMEOUT = 10
 EMAIL_HOST_USER = "maraujo@proyectoweb.website"
 EMAIL_HOST_PASSWORD = "Milagros2026@"
 DEFAULT_FROM_EMAIL = "maraujo@proyectoweb.website"
