@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
+
 
 from django.conf.global_settings import STATICFILES_DIRS
 
@@ -81,25 +83,15 @@ WSGI_APPLICATION = 'mi_sitio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
+
+
 DATABASES = {
-
-    'default': {
-
-        'ENGINE': 'django.db.backends.postgresql',
-
-        'NAME': 'ProyectoAgencia',
-
-        'USER': 'postgres',
-
-        'PASSWORD': '41741484',
-
-        'HOST': 'localhost',
-
-        'PORT': '5432',
-
-    }
-
+    'default': dj_database_url.config(
+        default='postgresql://postgres:41741484@localhost:5432/ProyectoAgencia',
+        conn_max_age=600,
+    )
 }
+
 
 
 # Password validation
