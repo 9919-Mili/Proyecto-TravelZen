@@ -1,0 +1,20 @@
+<header class="site-header">
+  <a href="{% url 'index' %}" class="logo">✈️ TravelZen</a>
+
+  {% if user.is_authenticated %}
+    <div class="header-acciones">
+             {% if request.resolver_match.url_name == 'dashboard' %}
+        <a href="{% url 'index' %}" class="btn-login btn-logout">Ir al simulador</a>
+      {% else %}
+        <a href="{% url 'dashboard' %}" class="btn-login btn-logout">Dashboard</a>
+      {% endif %}
+
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn-login btn-logout">Cerrar sesión</button>
+      </form>
+    </div>
+  {% else %}
+    <a href="{% url 'login' %}" class="btn-login">Iniciar Sesión</a>
+  {% endif %}
+</header>

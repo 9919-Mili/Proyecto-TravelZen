@@ -1,0 +1,309 @@
+/* ===== Dashboard TravelZen ===== */
+/* Bootstrap cambia la fuente: la volvemos a Montserrat */
+body {
+    font-family: "Montserrat", sans-serif;
+    background: #f6f5fb;
+}
+
+/* Ocupa todo el ancho de la pantalla */
+.dash {
+    width: 100%;
+    padding: 40px 32px;
+}
+
+/* Encabezado */
+.dash-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+.dash-etiqueta {
+    color: #624ebc;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin: 0 0 4px;
+}
+.dash-titulo {
+    color: #1d1636;
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 0;
+}
+.dash-subtitulo {
+    color: #6b6880;
+    margin: 6px 0 0;
+}
+
+/* Tarjeta blanca */
+.dash-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(29, 22, 54, 0.08);
+    padding: 20px;
+}
+
+/* Tabla */
+.dash-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+.dash-tabla th {
+    background: #f6f5fb;
+    color: #6b6880;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 12px 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+.dash-tabla td {
+    padding: 14px 10px;
+    border-bottom: 1px solid #eeedf3;
+    color: #1d1636;
+    vertical-align: middle;
+}
+.dash-tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+.dash-id     { color: #6b6880; }
+.dash-fuerte { font-weight: 600; }
+.dash-sub {
+    display: block;
+    color: #8a879c;
+    font-size: 0.72rem;
+}
+.sin-corte { white-space: nowrap; }
+.dash-vacio {
+    text-align: center;
+    color: #6b6880;
+    padding: 32px;
+}
+
+/* Botones */
+.dash-acciones {
+    display: flex;
+    gap: 6px;
+}
+.btn-dash {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid #d9d6e6;
+    border-radius: 8px;
+    background: #fff;
+    color: #1d1636;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-dash-modificar {
+    color: #624ebc;
+    border-color: #624ebc;
+}
+.btn-dash-modificar:hover {
+    background: #624ebc;
+    color: #fff;
+}
+.btn-dash-eliminar {
+    color: #c0392b;
+    border-color: #c0392b;
+}
+.btn-dash-eliminar:hover {
+    background: #c0392b;
+    color: #fff;
+}
+
+/* ===== Pantallas chicas: cada solicitud como tarjeta apilada ===== */
+@media (max-width: 1000px) {
+    .dash { padding: 28px 16px; }
+    .dash-titulo { font-size: 1.5rem; }
+
+    .dash-tabla thead { display: none; }          /* oculta los títulos de columna */
+    .dash-tabla tr {
+        display: block;
+        border: 1px solid #eeedf3;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        padding: 8px 4px;
+    }
+    .dash-tabla td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        border-bottom: none;
+        padding: 8px 12px;
+        text-align: right;
+    }
+    .dash-tabla td::before {
+        content: attr(data-label);
+        color: #6b6880;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .dash-vacio { display: block; text-align: center; }
+    .dash-vacio::before { content: none; }
+}
+
+/* ===== Login y registro ===== */
+.auth {
+    display: flex;
+    justify-content: center;
+    padding: 56px 16px;
+}
+.auth-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(29, 22, 54, 0.08);
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 440px;
+}
+.auth-titulo {
+    color: #1d1636;
+    font-weight: 700;
+    font-size: 1.7rem;
+    margin: 0 0 24px;
+}
+.auth-card label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+.auth-card input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d9d6e6;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+.auth-card input:focus {
+    outline: none;
+    border-color: #624ebc;
+}
+.auth-card .helptext,
+.auth-card ul {
+    display: block;
+    color: #8a879c;
+    font-size: 0.75rem;
+    margin: 6px 0 0;
+    padding-left: 18px;
+}
+.auth-card .errorlist {
+    color: #c0392b;
+    list-style: none;
+    padding: 0;
+    font-size: 0.8rem;
+}
+.btn-auth {
+    width: 100%;
+    background: #624ebc;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 8px;
+}
+.btn-auth:hover { opacity: 0.9; }
+.auth-pie {
+    text-align: center;
+    font-size: 0.85rem;
+    margin: 20px 0 0;
+}
+.auth-pie a { color: #624ebc; font-weight: 600; }
+
+/* ===== Formulario Modificar solicitud ===== */
+.dash-angosto {
+    max-width: 960px;
+    margin: 0 auto;
+}
+.form-modificar {
+    padding: 28px 32px;
+}
+/* Título de cada sección (Datos del cliente / Viaje / Servicios) */
+.form-seccion {
+    color: #624ebc;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eeedf3;
+}
+.form-seccion:first-of-type {
+    margin-top: 0;
+}
+.form-modificar .form-label {
+    color: #1d1636;
+    font-weight: 600;
+    font-size: 0.82rem;
+    margin-bottom: 6px;
+}
+.form-modificar .form-control,
+.form-modificar .form-select {
+    border: 1px solid #d9d6e6;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    color: #1d1636;
+}
+.form-modificar .form-control:focus,
+.form-modificar .form-select:focus {
+    border-color: #624ebc;
+    box-shadow: 0 0 0 3px rgba(98, 78, 188, 0.15);
+}
+/* Recuadro con el total actual */
+.form-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f6f5fb;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-top: 32px;
+    color: #6b6880;
+    font-weight: 600;
+}
+.form-total strong {
+    color: #624ebc;
+    font-size: 1.3rem;
+}
+/* Botones Cancelar / Guardar */
+.form-botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+}
+.form-botones .btn-dash {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+}
+.btn-dash-guardar {
+    background: #624ebc;
+    border-color: #624ebc;
+    color: #fff;
+}
+.btn-dash-guardar:hover {
+    opacity: 0.9;
+}
+@media (max-width: 600px) {
+    .form-modificar { padding: 20px 16px; }
+    .form-botones { flex-direction: column-reverse; }
+    .form-botones .btn-dash { width: 100%; text-align: center; }
+}

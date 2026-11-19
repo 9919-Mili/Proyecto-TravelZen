@@ -1,0 +1,130 @@
+:root {
+  --violeta: #624ebc;
+  --violeta-oscuro: #1d1636;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: var(--violeta-oscuro);
+}
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+.site-header .logo {
+  color: var(--violeta);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.site-footer {
+  background: var(--violeta-oscuro);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 40px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px; }
+
+.site-footer a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.site-footer a:hover { text-decoration: underline; }
+
+.footer-redes {
+  display: flex;
+  align-items: center;    /* centrados verticalmente */
+  gap: 12px;
+  font-size: 0.85rem;
+}
+.footer-redes .iconos { display: flex; gap: 12px; font-size: 1.2rem; }
+.btn-login {
+  background: var(--violeta);
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.btn-login:hover { opacity: 0.9; }
+
+/* ===== Header: botones de sesión ===== */
+.site-header .logo {
+  text-decoration: none;
+}
+.site-header a.btn-login {
+  text-decoration: none;
+  display: inline-block;
+  line-height: normal;
+}
+.site-header .header-acciones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.site-header .header-acciones form {
+  margin: 0;
+}
+.site-header .btn-logout {
+  background: #fff;
+  color: var(--violeta);
+  border: 1px solid var(--violeta);
+}
+.site-header .btn-logout:hover {
+  background: var(--violeta);
+  color: #fff;
+  opacity: 1;
+}
+
+
+.btn {
+  background: var(--violeta);
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 220px;
+  text-align: center;
+  font-size: 1rem;
+}
+.btn:hover { opacity: 0.9; }
+.btn-secondary {
+  background: transparent; color: var(--violeta);
+  border: 1px solid var(--violeta);
+  padding: 14px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 220px;
+  text-align: center;
+  font-size: 1rem;
+}
+.acciones {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+}

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard | TravelZen{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'mi_app/dashboard.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'mi_app/eliminar_solicitud.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<main class="dash">
+
+    <!-- Encabezado del panel -->
+    <div class="dash-encabezado">
+        <div>
+            <p class="dash-etiqueta">Panel de administración</p>
+            <h1 class="dash-titulo">Bienvenido{% if user.is_authenticated %}, {{ user.username }}{% endif %}</h1>
+            <p class="dash-subtitulo">Administrá las solicitudes realizadas en TravelZen.</p>
+        </div>
+        {# Acá va el botón "Cerrar sesión": lo agregamos en el paso del login #}
+    </div>
+
+    {% csrf_token %}
+
+       <!-- Tarjeta con la tabla de solicitudes -->
+    <div class="dash-card">
+        <table class="dash-tabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Destino</th>
+                    <th>Fechas</th>
+                    <th>Pasajeros</th>
+                    <th>Vuelo</th>
+                    <th>Alojamiento</th>
+                    <th>Comida</th>
+                    <th>Equipaje</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in solicitudes %}
+                <tr id="solicitud-{{ s.id }}">
+                    <td data-label="ID" class="dash-id">#{{ s.id }}</td>
+                    <td data-label="Cliente">
+                        <span class="dash-fuerte">{{ s.nombre }}</span>
+                        <span class="dash-sub">{{ s.email }}</span>
+                    </td>
+                    <td data-label="Destino">{{ s.get_destino_display }}</td>
+                    <td data-label="Fechas" class="sin-corte">{{ s.fecha_inicio|date:"d/m/Y" }} — {{ s.fecha_fin|date:"d/m/Y" }}</td>
+                    <td data-label="Viajeros">
+                        <span class="sin-corte">{{ s.adultos }} adultos</span>
+                        <span class="dash-sub">{{ s.ninios }} menores</span>
+                    </td>
+                    <td data-label="Vuelo">{{ s.get_tipo_vuelo_display }}</td>
+                    <td data-label="Alojamiento">{{ s.get_alojamiento_display }}</td>
+                    <td data-label="Comida">{{ s.get_regimen_display }}</td>
+                    <td data-label="Equipaje">{{ s.get_equipaje_display }}</td>
+                    <td data-label="Total" class="dash-fuerte sin-corte">${{ s.total|floatformat:"2g" }}</td>
+                    <td data-label="Acciones">
+                        <div class="dash-acciones">
+                            <a href="{% url 'modificar_solicitud' s.id %}" class="btn-dash btn-dash-modificar">Modificar</a>
+                            <button type="button" class="btn-dash btn-dash-eliminar eliminar-btn" data-id="{{ s.id }}">Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="11" class="dash-vacio">Todavía no hay solicitudes.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<!-- Modal para confirmar eliminación -->
+<div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-labelledby="confirmarEliminarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmarEliminarLabel">Confirmar eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">¿Estás segura de que querés eliminar esta solicitud?</div>
+            <div class="modal-footer">
+                <button type="button" class="btn-dash" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="confirmarEliminarBtn" class="btn-dash btn-dash-eliminar">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

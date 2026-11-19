@@ -1,0 +1,493 @@
+.hero {
+  max-width: 1800px;
+  margin: 0px auto;
+  height: 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(29,22,54,0.35), rgba(29,22,54,0.35)),
+              url("./img/Hero.jpg") center 45%/ cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+.hero h1 { font-size: 2.6rem; margin: 0 0 10px; }
+.hero p { font-size: 1.05rem; opacity: 0.95; }
+
+.como-funciona {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 20px;
+  text-align: center;
+}
+.como-funciona h2 {
+  color: var(--violeta-oscuro);
+  margin-bottom: 24px;
+}
+
+.pasos-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+.paso-info {
+  border: 1px solid #e5e0f5;
+  border-radius: 14px;
+  padding: 24px 16px;
+}
+.icono-circulo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #ede9f9;
+  color: var(--violeta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+.paso-info h3 { font-size: 0.95rem; margin: 6px 0; color: var(--violeta-oscuro); }
+.paso-info p { font-size: 0.82rem; color: #777; }
+
+.titulo-armado {
+  max-width: 1000px; margin: 0 auto; padding: 40px 20px 0;
+}
+.titulo-armado h2 { color: var(--violeta-oscuro); font-size: 1.8rem; }
+
+#form-paquete {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px 20px 80px;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 24px 0 40px;
+  flex-wrap: wrap;
+}
+.paso-num {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 2px solid #d8d3ea;
+  display: flex; align-items: center; justify-content: center;
+  color: #a89fc4;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.paso-etiqueta {
+  font-size: 0.8rem;
+  color: #a89fc4;
+  margin-right: 8px;
+}
+
+.paso-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.linea { width: 24px; height: 2px; background: #d8d3ea; }
+
+.paso-num.activo {
+  background: var(--violeta);
+  border-color: var(--violeta);
+  color: white;
+}
+.paso-num.activo + .paso-etiqueta { color: var(--violeta); font-weight: 600; }
+
+/* Paso completado: círculo verde clarito con un tilde verde */
+
+.paso-num.completo {
+  background: #e3f6e8;
+  border-color: #e3f6e8;
+  color: #2e9e4f;
+  font-size: 0;
+}
+
+.paso-num.completo::before {
+  content: "✓";
+  font-size: 1rem;
+}
+
+.paso h2 { color: var(--violeta-oscuro); margin-bottom: 4px; }
+.subtitulo { color: #888; margin-top: 0; margin-bottom: 20px; font-size: 0.9rem; }
+
+.grid-cards {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.grid-destinos, .grid-alojamiento { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.grid-vuelo { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* Tarjetas de destinos */
+
+.card-destino {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 3px solid transparent;
+  aspect-ratio: 4/3;
+}
+.card-destino:has(input:checked) { border-color: var(--violeta); }
+.card-destino img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-destino input { position: absolute; top: 8px; left: 8px; width: 18px; height: 18px; z-index: 2; }
+.nombre-destino {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.75));
+  color: white; padding: 24px 12px 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Tarjetas de vuelo */
+.card-vuelo {
+  border: 2px solid #e5e0f5; border-radius: 12px; padding: 24px 16px;
+  cursor: pointer; text-align: center; position: relative;
+}
+.card-vuelo:has(input:checked) { border-color: var(--violeta); background: #f7f5fd; }
+.card-vuelo input { position: absolute; top: 12px; right: 12px; }
+.card-vuelo .icono-vuelo { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+.card-vuelo strong { display: block; color: var(--violeta-oscuro); margin-bottom: 4px; }
+.card-vuelo p { font-size: 0.85rem; color: #777; margin: 0; }
+.badge {
+  display: inline-block;
+  margin-top: 10px;
+  background: #e8e3f8;
+  color: var(--violeta);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Tarjetas de alojamientos */
+
+.card-alojamiento {
+  border: 3px solid transparent; border-radius: 12px; overflow: hidden;
+  cursor: pointer; background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  position: relative;
+}
+.card-alojamiento:has(input:checked) { border-color: var(--violeta); }
+
+.card-alojamiento img { width: 100%; height: 140px; object-fit: cover; display: block; }
+
+.card-alojamiento input { position: absolute; top: 10px; left: 10px; z-index: 2; }
+
+.info-alojamiento { padding: 12px; }
+
+.info-alojamiento strong { display: block; color: var(--violeta-oscuro); font-size: 0.9rem; margin-bottom: 4px; }
+
+.precio-noche {
+  display: inline-block;
+  background: #ede9f9;
+  color: var(--violeta);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* Régimen / Equipaje: listas  */
+
+.fila-servicios {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.col-servicio {
+  flex: 1;
+  min-width: 260px;
+}
+.col-servicio h3 {
+  color: var(--violeta-oscuro);
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+.lista-radios {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.opcion-radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e5e0f5;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+.opcion-radio:has(input:checked) {
+  border-color: var(--violeta);
+  background: #f7f5fd;
+}
+.opcion-radio:has(input:checked) { border-color: var(--violeta); background: #f7f5fd; }
+
+/* Campos genéricos */
+
+.campo { margin-bottom: 16px; }
+
+.campo .label { display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--violeta-oscuro);
+  min-height: 2.4em;
+}
+
+.campo input, .campo select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.fila { display: flex; gap: 16px; }
+.fila .campo { flex: 1; }
+.fila-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+
+/* Selector de cantidad con + o - */
+
+.stepper-cantidad { display: flex; align-items: center; gap: 8px; }
+.stepper-cantidad input { text-align: center; width: 60px; flex: none; }
+.btn-stepper {
+  width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--violeta);
+  background: white; color: var(--violeta); font-size: 1.1rem; cursor: pointer; flex: none;
+}
+.btn-stepper:hover { background: #f0edfb; }
+
+.error {
+  color: #c0392b;
+  font-size: 0.85rem;
+  margin: 4px 0 12px;
+  min-height: 1.1em;
+}
+
+input.con-error {
+  border-color: #c0392b;
+  background: #fdf3f2;
+}
+
+/* Resumen de reserva */
+
+.resumen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* dos columnas iguales */
+  gap: 20px;
+  align-items: start;
+}
+.card-resumen {
+  background: white;
+  border: 1px solid #e6e2f3;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 8px rgba(29, 22, 54, 0.05);
+}
+.card-resumen h3 { margin: 0 0 16px; font-size: 1rem; color: var(--violeta-oscuro); }
+
+.fila-resumen {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: 0.85rem;
+}
+
+/* Tarjeta "Tu paquete": etiqueta en negrita y el valor al lado */
+.card-paquete .fila-resumen { display: grid; grid-template-columns: 140px 1fr; }
+.card-paquete .fila-resumen span:first-child { font-weight: 600; }
+
+/* Tarjeta "Detalle de costos" */
+.card-costos .fila-resumen span:last-child { text-align: right; white-space: nowrap; }
+.card-costos hr { border: none; border-top: 1px solid #eee; margin: 12px 0; }
+.fila-resumen.subtotal { font-weight: 700; }
+.fila-resumen.descuento span:last-child { color: #2e9e4f; }
+.fila-resumen.total { font-weight: 700; font-size: 1rem; margin-top: 8px; align-items: baseline; }
+.fila-resumen.total span:last-child { color: var(--violeta); font-size: 1.4rem; }
+
+
+  @media (max-width: 700px) {
+  .fila-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+ .resumen-grid { grid-template-columns: 1fr; }   /* en celular, una tarjeta debajo de la otra */
+
+.fila-4 {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.fila-4 > * {
+  flex: 1 1 0;
+  min-width: 140px;
+}
+.stepper-cantidad input {
+  flex: 1;
+  min-width: 0;
+}
+
+  /* Stepper en celular: número arriba y nombre abajo */
+  .stepper {
+    gap: 4px;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+
+  .paso-item {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .paso-num {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+  }
+
+  .paso-etiqueta {
+    font-size: 0.62rem;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .linea {
+    flex: 1;
+    min-width: 6px;
+    max-width: 24px;
+    margin-top: 14px;
+  }
+
+    .hero h1 { font-size: 1.8rem; }
+
+  /* Medida botones en celular */
+
+  .botones-navegacion { gap: 12px; }
+
+  .botones-navegacion .btn,
+  .botones-navegacion .btn-secondary {
+    min-width: 0;
+    flex: 1;
+    padding: 14px 12px;
+  }
+
+  .paso > .btn { width: 100%; min-width: 0; }
+}   /* ← fin del @media */
+
+
+/* Botones Volver / Continuar (todas las pantallas) */
+
+.botones-navegacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn-hero {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+/* ===== Valores en dólares (DolarApi) ===== */
+
+.fila-resumen span:last-child { text-align: right; }
+.valor-usd {
+  display: block;
+  color: #6b6880;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.nota-dolar {
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: #6b6880;
+}
+
+/* ===== Cartel de confirmación de envío ===== */
+.modal-envio {
+  position: fixed;
+  inset: 0;
+  background: rgba(29, 22, 54, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+}
+.modal-envio[hidden] {
+  display: none;
+}
+.modal-envio-caja {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(29, 22, 54, 0.25);
+  animation: aparecer 0.25s ease-out;
+}
+.modal-envio-icono {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #e6f6ec;
+  color: #1e9e57;
+  font-size: 2.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-envio-icono.aviso {      /* versión naranja, si el mail falló */
+  background: #fff3e0;
+  color: #b26a00;
+}
+.modal-envio-caja h3 {
+  margin: 0 0 8px;
+  color: #1d1636;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+}
+.modal-envio-caja p {
+  margin: 0 0 24px;
+  color: #6b6880;
+  font-size: 0.95rem;
+}
+@keyframes aparecer {           /* aparece con un pequeño "zoom" */
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ===== Ocultar las flechitas nativas del input numérico ===== */
+/* (Se utilizan botones + y − propios) */
+
+/* Chrome, Edge, Safari */
+.stepper-cantidad input[type="number"]::-webkit-outer-spin-button,
+.stepper-cantidad input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.stepper-cantidad input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

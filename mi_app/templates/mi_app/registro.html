@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Registro | TravelZen{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'mi_app/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="auth">
+    <div class="auth-card">
+        <p class="dash-etiqueta">Panel de administración</p>
+        <h1 class="auth-titulo">Crear cuenta</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-auth">Registrarse</button>
+        </form>
+
+        <p class="auth-pie">¿Ya tenés cuenta? <a href="{% url 'login' %}">Iniciar sesión</a></p>
+    </div>
+</main>
+{% endblock %}
