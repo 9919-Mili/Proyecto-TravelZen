@@ -61,9 +61,6 @@ function porcentaje(parte, total) {
 }
 
 // ===== Resumen del paquete (ARS y USD) =====
-function renderResumen(r) {
-  const c = r.costos;
-
   function renderResumen(r, dolar) {
     const c = r.costos;
 
@@ -258,4 +255,3 @@ function renderResumen(r) {
   });
 
   mostrarPaso(1, false);
-}
