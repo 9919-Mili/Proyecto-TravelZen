@@ -18,7 +18,7 @@ class Destino(models.Model):
     imagen = models.CharField(max_length=200)  # Ej: "destino_1.jpg"
 
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre} - {self.get_destino_display()}"
 
 # Tabla Solicitudes: guarda cada paquete confirmado por el usuario
 class Solicitud(models.Model):
